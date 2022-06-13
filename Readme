@@ -1,0 +1,45 @@
+Dev: Truong Nguyen Duy Phuong
+Document: simpleArchitect.drawio
+
+How to run
+
+go run ./cmd/api
+
+Test:
+
+Case 1: A user - default 2 tasks, reset count for new day
+
+curl --location --request POST '127.0.0.1:80/task' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username":"A",
+    "todotask":{
+        "content":"123"
+    }
+}'
+
+Case 2: B user - default 5 tasks, reset count for new day
+
+curl --location --request POST '127.0.0.1:80/task' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username":"B",
+    "todotask":{
+        "content":"123"
+    }
+}'
+
+Case 3: New user - default 1 task
+
+curl --location --request POST '127.0.0.1:80/task' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username":"V",
+    "todotask":{
+        "content":"123"
+    }
+}'
+
+Test:
+
+go test ./cmd/api
